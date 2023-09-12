@@ -1,0 +1,38 @@
+.navbar {
+  color: var(--bs-white);
+  background-color: var(--quaternary-color);
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.navbar ul.nav {
+  --bs-nav-link-padding-x: 1rem;
+  --bs-nav-link-padding-y: .5rem;
+  --bs-nav-link-font-weight: ;
+  --bs-nav-link-color: var(--bs-link-color);
+  --bs-nav-link-hover-color: var(--bs-link-hover-color);
+  --bs-nav-link-disabled-color: #6c757d;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.navbar ul.nav li.with-padding {
+  padding: 5px 12px;
+}
+
+.navbar ul.nav li a {
+  display: block;
+  color: var(--bs-cyan);
+  padding: 5px 12px;
+}
+
+.navbar ul.nav li a:hover {
+  background-color: var(--bs-dark);
+
+}

@@ -1,0 +1,54 @@
+@import './base.css';
+@import './borders.css';
+@import './button.css';
+@import './callout.css';
+@import './dropdown.css';
+@import './input-general.css';
+@import './flex-grid.css';
+@import './navbar.css';
+@import './overrides.css';
+@import './table.css';
+
+p {
+  margin: 4px 0;
+}
+
+ul {
+  margin: 0;
+  padding-left: 15px;
+}
+
+#app {
+  margin: 0 auto;
+
+  font-weight: normal;
+}
+
+.home {
+  display: flex;
+  flex: 1;
+  margin: 0 auto;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.page-container {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * .5);
+  padding-left: calc(var(--bs-gutter-x) * .5);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.page-content {
+  border-radius: 10px;
+  background-color: var(--bs-gray-200);
+  margin-top: 10px;
+  padding: 10px 0 0 0;
+}
+
+.color-red {
+  color: #e15c44;
+}

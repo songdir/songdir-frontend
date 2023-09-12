@@ -1,0 +1,11 @@
+.callout {
+  background-color: #fff;
+  border-left: 5px solid #e9ecef;
+  border-bottom: 1px solid #d0d0d0;
+  border-left-color: rgb(233, 236, 239);
+  padding: 0.5rem;
+}
+
+.callout.callout-danger {
+  border-left-color: #bd2130;
+}
