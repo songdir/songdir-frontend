@@ -5,7 +5,7 @@ import { defineComponent } from "vue"
 
 import type Song from "../lib/domain/Song"
 
-import { handleHttp, parseApiErrors } from "../lib"
+import { handleHttp } from "../lib"
 
 export default defineComponent({
   data() {
@@ -28,7 +28,7 @@ export default defineComponent({
     this.fetchLoggedIn()
     const songs_response = await handleHttp(async () => {
       const response = await axios.get(
-        `${this.backendHost}/songs`,
+        `${this.backendHost}/api/songs`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -39,7 +39,7 @@ export default defineComponent({
       this.songs = response.data.data
       return response
     })
-    if (songs_response!.status == 440) {
+    if (songs_response == undefined || songs_response!.status == 440) {
       this.handleTokenTimeout()
     }
   }
@@ -55,6 +55,7 @@ export default defineComponent({
         <th>Compositor</th>
         <th>Genero</th>
         <th>Album</th>
+        <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
@@ -64,6 +65,18 @@ export default defineComponent({
         <td>{{ song.composer }}</td>
         <td>{{ song.genre }}</td>
         <td>{{ song.album }}</td>
+        <td class="actions">
+          <div class="button">
+            <a :href="'/details/' + song.id">
+              <i class="fa-solid fa-eye"></i>
+            </a>
+          </div>
+          <div class="button">
+            <a href="">
+              <i class="fa-solid fa-trash"></i>
+            </a>
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>

@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router"
-import LoginView from "../views/LoginView.vue"
-import DirectoryView from "../views/DirectoryView.vue"
-import DetailsView from "../views/DetailsView.vue"
-import ManagementView from "../views/ManagementView.vue"
+import LoginView from "@/views/LoginView.vue"
+import DirectoryView from "@/views/DirectoryView.vue"
+import DetailsView from "@/views/DetailsView.vue"
+import ManagementView from "@/views/ManagementView.vue"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,7 +18,7 @@ const router = createRouter({
       component: DirectoryView
     },
     {
-      path: "/details",
+      path: "/details/:id",
       name: "details",
       component: DetailsView
     },
@@ -31,6 +31,8 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  console.log(from)
+  console.log(to)
   const authRequired = to.path != "/login"
   const accessToken = localStorage.getItem("accessToken")
   if (authRequired && (accessToken == null || accessToken == undefined)) {

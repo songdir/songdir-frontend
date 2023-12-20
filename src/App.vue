@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue"
 import { RouterView } from "vue-router"
-import { mapState } from "vuex"
+import { mapState, mapActions } from "vuex"
 
 export default defineComponent({
   components: {
@@ -9,6 +9,14 @@ export default defineComponent({
   },
   computed: {
     ...mapState(["loggedIn"])
+  },
+  methods: {
+    ...mapActions(["fetchAccessToken", "fetchLoggedIn", "fetchActiveSong"])
+  },
+  mounted() {
+    this.fetchAccessToken()
+    this.fetchLoggedIn()
+    this.fetchActiveSong()
   }
 })
 </script>
@@ -24,17 +32,17 @@ export default defineComponent({
             </div>
           </div>
           <div class="vertical bar button">
-            <a href="directory">
+            <a href="/directory">
+              <i class="fa-solid fa-list"></i>
+            </a>
+          </div>
+          <div class="vertical bar button">
+            <a href="/details">
               <i class="fa-solid fa-compact-disc"></i>
             </a>
           </div>
           <div class="vertical bar button">
-            <a href="details">
-              <i class="fa-solid fa-folder-tree"></i>
-            </a>
-          </div>
-          <div class="vertical bar button">
-            <a href="management">
+            <a href="/management">
               <i class="fa-solid fa-pen-to-square"></i>
             </a>
           </div>

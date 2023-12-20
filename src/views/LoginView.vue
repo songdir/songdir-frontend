@@ -18,7 +18,7 @@ export default defineComponent({
   data() {
     return {
       // Form
-      email: "",
+      username: "",
       password: "",
       errors: []
     }
@@ -31,12 +31,12 @@ export default defineComponent({
     async submitLogin() {
       this.errors = []
       const body = {
-        email: this.email,
+        username: this.username,
         password: this.password
       }
       const auth_response = await handleHttp(async () => {
         const response = await axios.post(
-          `${this.backendHost}/authenticate`,
+          `${this.backendHost}/signin`,
           body,
           {
             headers: {
@@ -47,9 +47,9 @@ export default defineComponent({
         return response
       })
       if (auth_response!.status == 200) {
-        const data = auth_response!.data
+        const data = auth_response!.data.data
         this.doLogin({
-          token: data.auth_token,
+          token: data.access_token,
           username: data.username
         })
         this.$router.push("/")
@@ -64,16 +64,15 @@ export default defineComponent({
 <template>
   <div class="login-container">
     <div class="login-box">
-      <div class="logo">
-        <img src="../assets/logo.png" alt="logo">
+      <div id="logo">
       </div>
       <h3>Inicio de sesión</h3>
       <form @submit.prevent="submitLogin">
         <div class="callout callout-danger" :key="error" v-for="error in errors">
           {{ error }}
         </div>
-        <hr v-if="errors">
-        <InputTextBox inputtype="email" label="Correo" name="email" v-model="email" />
+        <hr v-if="errors.length">
+        <InputTextBox inputtype="username" label="Nombre de usuario o correo" name="username" v-model="username" />
         <InputTextBox inputtype="password" label="Contraseña" name="password" v-model="password" />
         <ButtonBox type="submit" color="btn-blue">Iniciar sesión</ButtonBox>
       </form>
@@ -115,13 +114,19 @@ export default defineComponent({
   margin: 0 auto 10px auto;
 }
 
-.login-box .logo {
-  background-color: var(--primary-color);
-  max-height: 50px;
+.login-box #logo {
+  background-image: url(/src/assets/logo.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 50px;
 }
 
-.login-box .logo img {
+/*.login-box .logo img {
   width: auto;
   height: 100%;
+}*/
+
+#logo {
 }
 </style>

@@ -7,7 +7,9 @@
 @import './flex-grid.css';
 @import './navbar.css';
 @import './overrides.css';
+@import './tab-bar.css';
 @import './table.css';
+@import './text.css';
 
 p {
   margin: 4px 0;
@@ -16,6 +18,11 @@ p {
 ul {
   margin: 0;
   padding-left: 15px;
+}
+
+button {
+  background: none;
+  border: none;
 }
 
 #app {

@@ -1,0 +1,32 @@
+.tab-bar {
+  border-bottom: 1px solid var(--border-color);
+  justify-content: flex-start;
+}
+
+.tab {
+  display: flex;
+  padding: 5px;
+  border-right: 2px solid var(--border-color);
+  vertical-align: middle;
+  user-select: none;
+  -moz-user-select: none;
+}
+
+.tab .tab-title {
+  padding: 0 5px;
+}
+.tab .tab-action {
+  flex: 0.2;
+}
+
+.tab .tab-action button {
+  border-radius: 5px;
+}
+
+.tab .tab-action button:hover {
+  background-color: silver;
+}
+
+.tab .tab-action button:active {
+  background-color: darkgray;
+}
